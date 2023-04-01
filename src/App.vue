@@ -1,15 +1,27 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Welcome to Your Vue.js App" />
+  <book-monkey-list
+    headline="All BookMonkey Books"
+    paragraph="A list of all the books from the API"
+    :listItems="books"
+  />
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import BookMonkeyList from "@/components/BookMonkeyList.vue";
 
 export default {
   name: "App",
   components: {
-    HelloWorld,
+    BookMonkeyList,
+  },
+  data() {
+    return {
+      books: [],
+    };
+  },
+  async created() {
+    const response = await fetch("http://localhost:4730/books");
+    this.books = await response.json();
   },
 };
 </script>
@@ -19,8 +31,9 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  text-align: left;
   color: #2c3e50;
   margin-top: 60px;
+  padding: 0 3rem 4rem 3rem;
 }
 </style>
