@@ -35,6 +35,12 @@ export default {
     paragraph: String,
     listItems: Array,
   },
+  data() {
+    return {
+      buttonText: "Add Bookmark",
+      buttonStyle: "primary",
+    };
+  },
 };
 </script>
 
