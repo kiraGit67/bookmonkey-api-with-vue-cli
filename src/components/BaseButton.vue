@@ -1,10 +1,13 @@
 <template>
-  <button :class="cssButtonStyle">{{ buttonText }}</button>
+  <button :class="cssButtonStyle" @click="$emit('button-clicked')">
+    {{ buttonText }}
+  </button>
 </template>
 
 <script>
 export default {
   name: "BaseButton",
+  $emits: ["button-clicked"],
   props: {
     buttonText: String,
     variant: {
